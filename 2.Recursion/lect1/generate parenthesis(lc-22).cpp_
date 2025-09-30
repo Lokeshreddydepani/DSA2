@@ -1,0 +1,29 @@
+class Solution {
+public:
+void solve(int O,int C,string &output,vector<string>&ans){
+    if(O ==0 && C==0){
+        ans.push_back(output);
+        return;
+    }
+     if(O>0){
+        output.push_back('(');
+        solve(O-1,C,output,ans);
+        output.pop_back();
+    }
+    if(C>O){
+         output.push_back(')');
+        solve(O,C-1,output,ans);
+         output.pop_back();
+    }
+   
+}
+    vector<string> generateParenthesis(int n) {
+        vector<string>ans;
+        if(n==0)return ans;
+        string output= "";
+        solve(n,n,output,ans);
+        return ans;
+
+        
+    }
+};
